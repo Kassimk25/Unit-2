@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        
+        <title>Edit Movie</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <h1>Edit Movie</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/movies-page">View Movies</a>
+        </nav>
+
+       <form action="/update-movie" method="POST">
+        <input type="hidden" name="id" id="id">
+
+        <input type="text" name="title" id="title">
+        <input type="text" name="genre" id="genre">
+
+        <button type="submit">Update</button>
+
+       </form>
+
+       <script>
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("id").value = params.get("id");
+        document.getElementById("title").value = params.get("title");
+        document.getElementById("title").value = params.get("genre");
+       </script>
+
+    </body>
+</html>
