@@ -17,7 +17,7 @@
 
        <div id="movieList"></div>
 
-       <script>4
+       <script>
         async function loadMovies() {
             const res = await fetch("/movies");
             const movies = await res.json();
@@ -33,11 +33,11 @@
                 <p>${movie.genre}</p>
                 
                 <form action="/delete-movie" method="POST">
-                        <input type ="hidden" name="id" value="${movie._id}">
+                        <input type="hidden" name="id" value="${movie._id}">
                         <button type="submit">Delete</button>
                 </form>
                 
-                <a href="/edit?id=${movie._id}&title=${movie.title}&genre=${movie.genre}>
+                <a href="/edit?id=${movie._id}&title=${movie.title}&genre=${movie.genre}">
                     Edit
                 </a>
                 `;

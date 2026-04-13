@@ -7,11 +7,12 @@ const {
     getMovies,
     updateMovie,
     deleteMovie 
-} = require("movieModel.js");
+} = require("./models/movieModel");
 
 const app = express();
+const PORT = 3000;
 
-app.use(expressurlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -46,6 +47,15 @@ app.post("/add-movie", async (req, res) => {
     res.redirect("/movies-page");
 });
 
+app.post("/update-movie", async (req, res) => {
+    await updateMovie(req.body.id, {
+        title:req.body.title,
+        genre:req.body.genre
+    });
+
+    res.redirect("/movies-page");
+});
+
 app.post("/delete-movie", async (req, res) => {
     await deleteMovie(req.body.id);
     res.redirect("/movies-page");
@@ -53,6 +63,6 @@ app.post("/delete-movie", async (req, res) => {
 
 
 
-app.listen(() => {
-    console.log("Server running at http://localhost:3000");
+app.listen(PORT,() => {
+    console.log("Server running at http://localhost:" + PORT);
 });

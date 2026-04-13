@@ -23,7 +23,7 @@ async function getMovies() {
 }
 
 
-async function updateMovie() {
+async function updateMovie(id, data) {
     const col = await getCollection();
     return await col.updateOne(
         {_id: new ObjectId(id) },
@@ -32,7 +32,7 @@ async function updateMovie() {
 
 }
 
-async function deleteMovie() {
+async function deleteMovie(id) {
     const col = await getCollection();
     return await col.deleteOne({_id: new ObjectId(id) });
 
@@ -43,4 +43,4 @@ module.exports = {
     getMovies,
     updateMovie,
     deleteMovie
-}
+};
